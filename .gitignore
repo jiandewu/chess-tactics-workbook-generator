@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# LaTeX intermediate files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex
+*.synctex.gz
+*.toc
+*.xdv
+
+# Generated temporary sources and workbooks
+temp*
+chss*
+chess_*.pdf
+chessAn_*.pdf
+*chessCo_*.pdf
+
+# Keep the historical/reference PDFs already shipped with the project
+!4462solve.pdf
+!TeX/test.pdf
+!TeX/test.log
+!xskak/*.pdf
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini

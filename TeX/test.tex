@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[top=0.8in,bottom=0.5in,left=1cm,right=1cm,landscape]{geometry}
+\usepackage{multicol}
+\usepackage[indonesian]{babel}
+\usepackage{animate}
+\usepackage{chessboard,xskak}
+\definecolor{warna1}{HTML}{1E90FF}
+\definecolor{warna2}{HTML}{F0E68C}
+\definecolor{warna3}{HTML}{2F4F4F}
+\usepackage[colorlinks]{hyperref}
+
+\begin{document}
+\setchessboard{boardfontsize=1.5cm,shortenend=5pt, margin=false}
+\skaklanguage[english]
+
+\newcommand\getmovestyle[1]{
+\ifthenelse
+{\equal{#1}{N}}
+{\def\mymovestyle{[clockwise=false,style=knight]curvemove}}
+{\ifthenelse
+{\equal{#1}{}}
+{\def\mymovestyle{curvemove}}
+{\def\mymovestyle{straightmove}}}}
+
+\newcommand\currentboard{
+\begin{picture}(130,130)
+\put(13,13){\chessboard[moverstyle=circle]}
+\end{picture}}
+
+\begin{minipage}{0.55\linewidth}
+$\natural$0245 (mate in 1)\\
+\newchessgame[id=show0245]
+\unitlength1pt
+\hidemoves{1. d4 f5 2. Nc3 Nf6 3. Bg5 d5 4. e3 e6 5. Nf3 a6 6. Be2 Bd6 7. O-O Nbd7 8. Nb1 O-O 9. c4 c6 10. Nbd2 b6 11. cxd5 cxd5 12. Bf4 Qe7 13. Ne1 Bb7 14. Nd3 Ne4 15. Nf3 Rfc8 16. Bxd6 Nxd6 17. Rc1 Rxc1 18. Qxc1 Rc8 19. Qa1 Rc2 20. Rc1 Rxc1+ 21.Qxc1 Qd8 22. Nf4 Kf7 23. h4 h6 24. Qd1 Qc7 25. Bd3 Bc8 26. Nh2 Nf6 27. g4 Kg8 28. g5 Nfe4 29. Bxe4 dxe4 30. Qb3 Kf7 31. Nf1 b5 32. Ng3 hxg5 33. hxg5 g6 34. Qd1 Kg7 35. Kg2 Nf7 36. Qh1 Qe7 37. Qc1 Bb7 38. Qc5 Qd7 39. Nh3 Bd5#}
+\begin{animateinline}[controls]{0.5}
+\begin{picture}(800,400)
+\put(25,13){\chessboard[moverstyle=circle,pgfshortenend=0.3em,setfen=\xskakgetgame{initfen}]}
+\put(425,13){\xskakget{moveto}}
+\end{picture}
+\newframe
+\xskakloop{
+\getmovestyle{\xskakget{piecechar}}
+\begin{picture}(800,400)
+\put(425,385){\xskakget{move}}
+\put(25,13){
+\chessboard[moverstyle=circle,pgfstyle=\mymovestyle, color=red!50!gray,
+pgfshortenend=0.3em,arrow=to,
+markmoves=\xskakget{move},
+coloremph,piececolor=warna1,
+emphfields={\xskakget{moveto}},
+setfen=\xskakget{nextfen}]}
+\end{picture}
+\newframe}
+\begin{picture}(400,400)
+\put(25,13){\chessboard[moverstyle=circle,pgfshortenend=0.3em,setfen=\xskakgetgame{lastfen}]}
+\end{picture}
+\end{animateinline}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\variation{1. d4 f5 2. Nc3 Nf6 3. Bg5 d5 4. e3 e6 5. Nf3 a6 6. Be2 Bd6 7. O-O Nbd7 8. Nb1 O-O 9. c4 c6 10. Nbd2 b6 11. cxd5 cxd5 12. Bf4 Qe7 13. Ne1 Bb7 14. Nd3 Ne4 15. Nf3 Rfc8 16. Bxd6 Nxd6 17. Rc1 Rxc1 18. Qxc1 Rc8 19. Qa1 Rc2 20. Rc1 Rxc1+ 21.Qxc1 Qd8 22. Nf4 Kf7 23. h4 h6 24. Qd1 Qc7 25. Bd3 Bc8 26. Nh2 Nf6 27. g4 Kg8 28. g5 Nfe4 29. Bxe4 dxe4 30. Qb3 Kf7 31. Nf1 b5 32. Ng3 hxg5 33. hxg5 g6 34. Qd1 Kg7 35. Kg2 Nf7 36. Qh1 Qe7 37. Qc1 Bb7 38. Qc5 Qd7 39. Nh3 Bd5#}\end{minipage}
+
+\end{document} 

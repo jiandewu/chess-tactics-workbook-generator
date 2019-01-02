@@ -1,0 +1,6 @@
+lastquestion=722
+wrong=498,547,552,561,583,586,591,594,596,599,600,632,633,634
+randsel=2
+questperpage=6
+page=1
+halfwrong=463,550,612,628
